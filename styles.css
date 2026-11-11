@@ -1,0 +1,376 @@
+/* DYCK Awards 2026 - Mobile First Styles */
+:root {
+  --gold: #D4AF37;
+  --gold-soft: #E8D5A3;
+  --black: #000000;
+  --near-black: #0D0D0D;
+  --card: #141414;
+  --text: #F5F5F5;
+  --text-muted: #A0A0A0;
+  --border: rgba(212, 175, 55, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000000;
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+.header {
+  text-align: center;
+  padding: 1.75rem 1rem 1.25rem;
+  background: #000000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.25));
+}
+
+.header h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.35rem;
+  color: var(--gold);
+  letter-spacing: 0.35em;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+main {
+  padding: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1.4rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+
+.card h2 {
+  font-family: 'Inter', sans-serif;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Forms */
+input, select, textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  background: #000000;
+  color: var(--text);
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Inter', sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #0A0A0A;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+button, .btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.95rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+button:active, .btn:active {
+  transform: scale(0.985);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+button:hover {
+  background: var(--gold);
+  color: #000000;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+button.danger {
+  background: var(--danger);
+  color: white;
+}
+
+/* Nominee grid */
+.nominee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.nominee-card {
+  background: #0A0A0A;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nominee-card:active {
+  transform: scale(0.94);
+}
+
+.nominee-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nominee-card:active img {
+  transform: scale(1.08);
+}
+
+/* Animación al seleccionar */
+.nominee-card.selected-5,
+.nominee-card.selected-3,
+.nominee-card.selected-1 {
+  animation: selectPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nominee-card.selected-5 {
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.12);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+}
+
+.nominee-card.selected-3 {
+  border-color: #C0C0C0;
+  background: rgba(192, 192, 192, 0.12);
+  box-shadow: 0 0 16px rgba(192, 192, 192, 0.3);
+}
+
+.nominee-card.selected-1 {
+  border-color: #CD7F32;
+  background: rgba(205, 127, 50, 0.12);
+  box-shadow: 0 0 14px rgba(205, 127, 50, 0.3);
+}
+
+@keyframes selectPop {
+  0% { transform: scale(0.92); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.points-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--gold);
+  color: var(--dark);
+  font-weight: 700;
+  padding: 0.3rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  animation: badgeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+@keyframes badgeIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.nominee-card .name {
+  padding: 0.6rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.points-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--gold);
+  color: var(--dark);
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.nominee-card {
+  position: relative;
+}
+
+/* Ranking buttons */
+.rank-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.rank-btn {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.rank-btn.active-5 { background: #FFD700; color: var(--dark); }
+.rank-btn.active-3 { background: #C0C0C0; color: var(--dark); }
+.rank-btn.active-1 { background: #CD7F32; color: white; }
+
+/* Admin float button */
+.admin-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: auto;
+  padding: 0.65rem 1.15rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  z-index: 200;
+  background: #000000;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* Results */
+.results-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.results-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.results-item .info {
+  flex: 1;
+}
+
+.results-item .points {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--gold);
+}
+
+.hidden { display: none !important; }
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  color: var(--gold);
+  font-size: 0.95rem;
+  margin: 1.75rem 0 1rem;
+  text-align: center;
+  letter-spacing: 0.25em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.voter-name-display {
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Trophy hero */
+.trophy-hero {
+  text-align: center;
+  margin: 1rem 0 2rem;
+}
+
+.trophy-hero img {
+  width: 140px;
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4));
+}
